@@ -1,37 +1,37 @@
 ﻿Type,Name,X,Y,From City,To City,Ease,Distance,Safety
-0,Winterfell,657,673
-0,Bear Island,510,514
-0,Castle Black,770,422
-0,Eastwatch,829,423
-0,Craster's Keep,737,382
-0,The Dreadfort,821,646
-0,White Harbor,744,838
-0,Barrowtown,536,820
-0,Moat Cailin,660,875
-0,The Twins,633,1054
-0,Pyke,419,1131
-0,Riverrun,603,1189
-0,Harrenhal,730,1229
-0,Gulltown,969,1147
-0,Dragonstone,937,1282
-0,Casterly Rock,415,1304
-0,Faircastle,398,1241
-0,Lannisport,413,1319
-0,Highgarden,506,1552
-0,Oldtown,414,1660
-0,The Arbor,343,1775
-0,Sunspear,966,1756
-0,Braavos,1160,1006
-0,Pentos,1169,1354
-0,Norvos,1379,1234
-0,Qohor,1575,1353
-0,Myr,1240,1565
-0,Volantis,1532,1768
-0,Valyria,1730,2078
-0,Elyria,1840,1793
-0,Meereen,2169,1664
-0,Astopor,2085,1848
-0,Yunkai,2115,1713
-0,Qarth,2752,1987
-0,Vaes Dothrak,2559,1259
-0,Oros,1780,1960
+0,Winterfell,657,673,,,,,
+0,Bear Island,510,514,,,,,
+0,Castle Black,770,422,,,,,
+0,Eastwatch,829,423,,,,,
+0,Craster's Keep,737,382,,,,,
+0,The Dreadfort,821,646,,,,,
+0,White Harbor,744,838,,,,,
+0,Barrowtown,536,820,,,,,
+0,Moat Cailin,660,875,,,,,
+0,The Twins,633,1054,,,,,
+0,Pyke,419,1131,,,,,
+0,Riverrun,603,1189,,,,,
+0,Harrenhal,730,1229,,,,,
+0,Gulltown,969,1147,,,,,
+0,Dragonstone,937,1282,,,,,
+0,Casterly Rock,415,1304,,,,,
+0,Faircastle,398,1241,,,,,
+0,Lannisport,413,1319,,,,,
+0,Highgarden,506,1552,,,,,
+0,Oldtown,414,1660,,,,,
+0,The Arbor,343,1775,,,,,
+0,Sunspear,966,1756,,,,,
+0,Braavos,1160,1006,,,,,
+0,Pentos,1169,1354,,,,,
+0,Norvos,1379,1234,,,,,
+0,Qohor,1575,1353,,,,,
+0,Myr,1240,1565,,,,,
+0,Volantis,1532,1768,,,,,
+0,Valyria,1730,2078,,,,,
+0,Elyria,1840,1793,,,,,
+0,Meereen,2169,1664,,,,,
+0,Astopor,2085,1848,,,,,
+0,Yunkai,2115,1713,,,,,
+0,Qarth,2752,1987,,,,,
+0,Vaes Dothrak,2559,1259,,,,,
+0,Oros,1780,1960,,,,,
