@@ -75,4 +75,12 @@ public class MainModel {
 		}
 	}
 
+	public List<City> getCities() {
+		return cities;
+	}
+
+	public List<Route> getRoutes() {
+		return routes;
+	}
+
 }
