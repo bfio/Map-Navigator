@@ -37,27 +37,75 @@
 0,Oros,1780,1960,,,,,
 1,,,,Winterfell,Castle Black,7,,7
 1,,,,Winterfell,Bear Island,5,,6
-,,,,Winterfell,The Dreadfort,8,,8
-,,,,Winterfell,White Harbor,7,,7
-,,,,Castle Black,Craster's Keep,3,,3
-,,,,Castle Black,Eastwatch,6,,9
-,,,,White Harbor,Moat Cailin,7,,8
-,,,,The Dreadfort,Castle Black,5,,6
-,,,,Moat Cailin,Winterfell,9,,7
-,,,,The Twins,Moat Cailin,8,,7
-,,,,The Twins,Barrowtown,5,,6
-,,,,Barrowtown,Moat Cailin,7,,7
-,,,,The Twins,Gulltown,4,,4
-,,,,Gulltown,Dragonstone,2,,6
-,,,,The Twins,Pyke,6,,7
-,,,,Riverrun,Pyke,6,,7
-,,,,The Twins,Riverrun,8,,9
-,,,,Riverrun,Harrenhal,8,,9
-,,,,The Twins,Harrenhal,10,,9
-,,,,Pyke,Faircastle,5,,6
-,,,,Casterly Rock,Lannisport,10,,9
-,,,,Faircastle,Casterly Rock,7,,7
-,,,,Riverrun,Casterly Rock,10,,8
-,,,,Lannisport,Riverrun,10,,8
-,,,,Harrenhal,Dragonstone,5,,6
-,,,,Harrenhal,Casterly Rock,7,,6
+1,,,,Winterfell,The Dreadfort,8,,8
+1,,,,Winterfell,White Harbor,7,,7
+1,,,,Castle Black,Craster's Keep,3,,3
+1,,,,Craster's Keep,Eastwatch,2,,2
+1,,,,Castle Black,Eastwatch,6,,9
+1,,,,White Harbor,Moat Cailin,7,,8
+1,,,,The Dreadfort,Castle Black,5,,6
+1,,,,Moat Cailin,Winterfell,9,,7
+1,,,,The Twins,Moat Cailin,8,,7
+1,,,,The Twins,Barrowtown,5,,6
+1,,,,Barrowtown,Moat Cailin,7,,7
+1,,,,The Twins,Gulltown,4,,4
+1,,,,Gulltown,Dragonstone,2,,6
+1,,,,The Twins,Pyke,6,,7
+1,,,,Riverrun,Pyke,6,,7
+1,,,,The Twins,Riverrun,8,,9
+1,,,,Riverrun,Harrenhal,8,,9
+1,,,,The Twins,Harrenhal,10,,9
+1,,,,Pyke,Faircastle,5,,6
+1,,,,Casterly Rock,Lannisport,10,,9
+1,,,,Faircastle,Casterly Rock,7,,7
+1,,,,Riverrun,Casterly Rock,10,,8
+1,,,,Lannisport,Riverrun,10,,8
+1,,,,Harrenhal,Dragonstone,5,,6
+1,,,,Harrenhal,Casterly Rock,7,,6
+1,,,,Lannisport,Highgarden,6,,8
+1,,,,Harrenhal,Highgarden,6,,8
+1,,,,Oldtown,Highgarden,10,,8
+1,,,,Sunspear,Dragonstone,3,,3
+1,,,,Sunspear,Highgarden,2,,4
+1,,,,Sunspear,Oldtown,2,,3
+1,,,,The Arbor,Oldtown,6,,6
+1,,,,The Arbor,Sunspear,4,,5
+1,,,,Barrowtown,Pyke,3,,4
+1,,,,Bear Island,Barrowtown,2,,5
+1,,,,Braavos,White Harbor,6,,7
+1,,,,Braavos,Gulltown,6,,6
+1,,,,Braavos,Dragonstone,3,,6
+1,,,,Braavos,Sunspear,2,,3
+1,,,,Pentos,White Harbor,3,,4
+1,,,,Pentos,Gulltown,5,,6
+1,,,,Pentos,Dragonstone,3,,6
+1,,,,Pentos,Sunspear,5,,3
+1,,,,Myr,Sunspear,6,,3
+1,,,,Myr,Dragonstone,4,,6
+1,,,,Myr,Gulltown,5,,6
+1,,,,Norvos,Pentos,6,,5
+1,,,,Norvos,Braavos,4,,6
+1,,,,Myr,Pentos,4,,8
+1,,,,Norvos,Myr,5,,7
+1,,,,Qohor,Norvos,4,,5
+1,,,,Volantis,Myr,7,,6
+1,,,,Qohor,Myr,7,,7
+1,,,,Volantis,Qohor,6,,5
+1,,,,Vaes Dothrak,Qohor,7,,2
+1,,,,Volantis,Vaes Dothrak,5,,2
+1,,,,Valyria,Oros,4,,2
+1,,,,Volantis,Valyria,5,,1
+1,,,,Volantis,Oros,4,,3
+1,,,,Elyria,Oros,3,,4
+1,,,,Elyria,Volantis,7,,5
+1,,,,Elyria,Astopor,6,,4
+1,,,,Elyria,Yunkai,5,,4
+1,,,,Astopor,Yunkai,9,,5
+1,,,,Meereen,Yunkai,9,,6
+1,,,,Meereen,Astopor,5,,5
+1,,,,Elyria,Meereen,6,,5
+1,,,,Vaes Dothrak,Meereen,8,,2
+1,,,,Vaes Dothrak,Qarth,7,,1
+1,,,,Meereen,Qarth,3,,3
+1,,,,Valyria,Qarth,5,,1
+1,,,,Braavos,The Dreadfort,3,,3
