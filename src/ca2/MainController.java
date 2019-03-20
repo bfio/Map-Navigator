@@ -1,5 +1,8 @@
 package ca2;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+
 import ca2.MainModel;
 import ca2.MainView;
 import javafx.application.Platform;
@@ -19,6 +22,7 @@ public class MainController implements EventHandler<ActionEvent>{
 		view.getAllMenuItems().forEach(m -> m.setOnAction(this));
 		
 		displayMap();
+		model.parseDatabase(new File("Database.csv"));
 	}
 
 	private void displayMap() {
