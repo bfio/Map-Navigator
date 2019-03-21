@@ -4,32 +4,23 @@ public class Route {
 
 	private City fromCity, toCity;
 	
-	private String fromCityName, toCityName;
 	private int ease, safety;
 	private double distance;
 	
-	public Route(String fCity, String tCity, int ease, double distance, int safety){
-		this.fromCityName = fCity;
-		this.toCityName = tCity;
+	public Route(City from, City to, int ease, double distance, int safety){
+		this.fromCity = from;
+		this.toCity = to;
 		this.ease = ease;
 		this.distance = distance;
 		this.safety = safety;
 	}
-	
-	public String getFromCityName() {
-		return fromCityName;
+
+	public City getFromCity() {
+		return fromCity;
 	}
-	
-	public String getToCityName() {
-		return toCityName;
-	}
-	
-	public void setFromCity(City c) {
-		this.fromCity = c;
-	}
-	
-	public void setToCity(City c) {
-		this.toCity = c;
+
+	public City getToCity() {
+		return toCity;
 	}
 	
 }

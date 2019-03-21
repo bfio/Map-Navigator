@@ -1,4 +1,6 @@
 package ca2;
+import java.io.File;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -15,7 +17,7 @@ public class MapNavigatorApplication extends Application {
 		mainStage = stage;
 
 		MainView mainView = new MainView();
-		MainModel mainModel = new MainModel();
+		MainModel mainModel = new MainModel(new File("Database.csv"));
 		new MainController(mainView, mainModel);
 	}
 

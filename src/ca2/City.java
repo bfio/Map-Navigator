@@ -1,7 +1,12 @@
 package ca2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class City {
 
+	public List<City> connectedCities = new ArrayList<>();
+	
 	private String name;
 	private int x, y;
 	
@@ -15,4 +20,8 @@ public class City {
 		return name;
 	}
 	
+	public void connectCity(City city) {
+		connectedCities.add(city);
+		city.connectedCities.add(this);
+	}
 }
