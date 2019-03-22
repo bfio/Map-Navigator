@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import ca2.City;
 import ca2.MainModel;
+import ca2.Route;
 
 class MainModelTests {
 
@@ -26,6 +27,21 @@ class MainModelTests {
 	}
 	
 	@Test
+	void distances() {
+		List<Route> routes = model.getRoutes();
+		
+		for(Route r : routes) {
+			double x1 = r.getFromCity().x;
+			double x2 = r.getToCity().x;
+			double y1 = r.getFromCity().y;
+			double y2 = r.getToCity().y;
+			
+			double distance = Math.sqrt(Math.pow(x2-x1, 2) + Math.pow(y2-y1, 2));
+			System.out.println(r.getFromCity().name + " to " + r.getToCity().name + " is: " + distance);
+		}
+	}
+	
+	@Test
 	void testSearching() {
 		testSearch("Winterfell", "Braavos");
 	}
@@ -35,7 +51,7 @@ class MainModelTests {
 		List<City> cities = model.getCities();
 		
 		for (City city : cities) {
-			String cityName = city.getName();
+			String cityName = city.name;
 
 			if (from.equals(cityName)) {
 				fromCity = city;

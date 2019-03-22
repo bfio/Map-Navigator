@@ -65,7 +65,7 @@ public class MainModel {
 				String fromCityName = mScanner.next();
 				String toCityName = mScanner.next();
 				int ease = mScanner.nextInt();
-				String distance = mScanner.next();
+				double distance = mScanner.nextDouble();
 				int safety = mScanner.nextInt();
 
 				System.out.println("Route " + fromCityName + " to " + toCityName + '\t' + "Ease: " + ease
@@ -74,7 +74,7 @@ public class MainModel {
 				City fromCity = null, toCity = null;
 
 				for (City city : cities) {
-					String cityName = city.getName();
+					String cityName = city.name;
 
 					if (fromCityName.equals(cityName)) {
 						fromCity = city;
@@ -83,7 +83,7 @@ public class MainModel {
 					}
 				}
 
-				routes.add(new Route(fromCity, toCity, ease, 0.0, safety));
+				routes.add(new Route(fromCity, toCity, ease, distance, safety));
 			}
 
 			if (mScanner.hasNextLine()) {
@@ -111,7 +111,7 @@ public class MainModel {
 
 	// Recursive depth-first search of graph (node returned if found)
 	public City searchGraphDepthFirst(City from, List<City> encountered, City lookingfor) {
-		System.out.println(from.getName());
+		System.out.println(from.name);
 		if (from.equals(lookingfor))
 			return from;
 		if (encountered == null)

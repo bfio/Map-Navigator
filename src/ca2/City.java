@@ -7,8 +7,8 @@ public class City {
 
 	public List<City> connectedCities = new ArrayList<>();
 	
-	private String name;
-	private int x, y;
+	public String name;
+	public int x, y;
 	
 	public City(String name, int x, int y) {
 		this.name = name;
@@ -16,12 +16,9 @@ public class City {
 		this.y = y;
 	}
 	
-	public String getName() {
-		return name;
-	}
-	
 	public void connectCity(City city) {
 		connectedCities.add(city);
 		city.connectedCities.add(this);
 	}
+	
 }

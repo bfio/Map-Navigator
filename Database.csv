@@ -35,77 +35,77 @@
 0,Qarth,2752,1987,,,,,
 0,Vaes Dothrak,2559,1259,,,,,
 0,Oros,1780,1960,,,,,
-1,,,,Winterfell,Castle Black,7,,7
-1,,,,Winterfell,Bear Island,5,,6
-1,,,,Winterfell,The Dreadfort,8,,8
-1,,,,Winterfell,White Harbor,7,,7
-1,,,,Castle Black,Craster's Keep,3,,3
-1,,,,Craster's Keep,Eastwatch,2,,2
-1,,,,Castle Black,Eastwatch,6,,9
-1,,,,White Harbor,Moat Cailin,7,,8
-1,,,,The Dreadfort,Castle Black,5,,6
-1,,,,Moat Cailin,Winterfell,9,,7
-1,,,,The Twins,Moat Cailin,8,,7
-1,,,,The Twins,Barrowtown,5,,6
-1,,,,Barrowtown,Moat Cailin,7,,7
-1,,,,The Twins,Gulltown,4,,4
-1,,,,Gulltown,Dragonstone,2,,6
-1,,,,The Twins,Pyke,6,,7
-1,,,,Riverrun,Pyke,6,,7
-1,,,,The Twins,Riverrun,8,,9
-1,,,,Riverrun,Harrenhal,8,,9
-1,,,,The Twins,Harrenhal,10,,9
-1,,,,Pyke,Faircastle,5,,6
-1,,,,Casterly Rock,Lannisport,10,,9
-1,,,,Faircastle,Casterly Rock,7,,7
-1,,,,Riverrun,Casterly Rock,10,,8
-1,,,,Lannisport,Riverrun,10,,8
-1,,,,Harrenhal,Dragonstone,5,,6
-1,,,,Harrenhal,Casterly Rock,7,,6
-1,,,,Lannisport,Highgarden,6,,8
-1,,,,Harrenhal,Highgarden,6,,8
-1,,,,Oldtown,Highgarden,10,,8
-1,,,,Sunspear,Dragonstone,3,,3
-1,,,,Sunspear,Highgarden,2,,4
-1,,,,Sunspear,Oldtown,2,,3
-1,,,,The Arbor,Oldtown,6,,6
-1,,,,The Arbor,Sunspear,4,,5
-1,,,,Barrowtown,Pyke,3,,4
-1,,,,Bear Island,Barrowtown,2,,5
-1,,,,Braavos,White Harbor,6,,7
-1,,,,Braavos,Gulltown,6,,6
-1,,,,Braavos,Dragonstone,3,,6
-1,,,,Braavos,Sunspear,2,,3
-1,,,,Pentos,White Harbor,3,,4
-1,,,,Pentos,Gulltown,5,,6
-1,,,,Pentos,Dragonstone,3,,6
-1,,,,Pentos,Sunspear,5,,3
-1,,,,Myr,Sunspear,6,,3
-1,,,,Myr,Dragonstone,4,,6
-1,,,,Myr,Gulltown,5,,6
-1,,,,Norvos,Pentos,6,,5
-1,,,,Norvos,Braavos,4,,6
-1,,,,Myr,Pentos,4,,8
-1,,,,Norvos,Myr,5,,7
-1,,,,Qohor,Norvos,4,,5
-1,,,,Volantis,Myr,7,,6
-1,,,,Qohor,Myr,7,,7
-1,,,,Volantis,Qohor,6,,5
-1,,,,Vaes Dothrak,Qohor,7,,2
-1,,,,Volantis,Vaes Dothrak,5,,2
-1,,,,Valyria,Oros,4,,2
-1,,,,Volantis,Valyria,5,,1
-1,,,,Volantis,Oros,4,,3
-1,,,,Elyria,Oros,3,,4
-1,,,,Elyria,Volantis,7,,5
-1,,,,Elyria,Astopor,6,,4
-1,,,,Elyria,Yunkai,5,,4
-1,,,,Astopor,Yunkai,9,,5
-1,,,,Meereen,Yunkai,9,,6
-1,,,,Meereen,Astopor,5,,5
-1,,,,Elyria,Meereen,6,,5
-1,,,,Vaes Dothrak,Meereen,8,,2
-1,,,,Vaes Dothrak,Qarth,7,,1
-1,,,,Meereen,Qarth,3,,3
-1,,,,Valyria,Qarth,5,,1
-1,,,,Braavos,The Dreadfort,3,,3
+1,,,,Winterfell,Castle Black,7,275.2635101,7
+1,,,,Winterfell,Bear Island,5,216.5409892,6
+1,,,,Winterfell,The Dreadfort,8,166.2077014,8
+1,,,,Winterfell,White Harbor,7,186.5314987,7
+1,,,,Castle Black,Craster's Keep,3,51.85556865,3
+1,,,,Craster's Keep,Eastwatch,2,100.7223908,2
+1,,,,Castle Black,Eastwatch,6,59.00847397,9
+1,,,,White Harbor,Moat Cailin,7,91.78779875,8
+1,,,,The Dreadfort,Castle Black,5,229.7324531,6
+1,,,,Moat Cailin,Winterfell,9,202.022276,7
+1,,,,The Twins,Moat Cailin,8,181.0248602,7
+1,,,,The Twins,Barrowtown,5,253.3081128,6
+1,,,,Barrowtown,Moat Cailin,7,135.6502857,7
+1,,,,The Twins,Gulltown,4,348.6330449,4
+1,,,,Gulltown,Dragonstone,2,138.7407655,6
+1,,,,The Twins,Pyke,6,227.4313083,7
+1,,,,Riverrun,Pyke,6,192.9248558,7
+1,,,,The Twins,Riverrun,8,138.2931669,9
+1,,,,Riverrun,Harrenhal,8,133.150291,9
+1,,,,The Twins,Harrenhal,10,200.0849819,9
+1,,,,Pyke,Faircastle,5,111.9866063,6
+1,,,,Casterly Rock,Lannisport,10,15.13274595,9
+1,,,,Faircastle,Casterly Rock,7,65.2533524,7
+1,,,,Riverrun,Casterly Rock,10,220.3837562,8
+1,,,,Lannisport,Riverrun,10,230.2172887,8
+1,,,,Harrenhal,Dragonstone,5,213.6773268,6
+1,,,,Harrenhal,Casterly Rock,7,323.8054972,6
+1,,,,Lannisport,Highgarden,6,250.8744706,8
+1,,,,Harrenhal,Highgarden,6,393.0712404,8
+1,,,,Oldtown,Highgarden,10,141.8731828,8
+1,,,,Sunspear,Dragonstone,3,474.8863022,3
+1,,,,Sunspear,Highgarden,2,503.2057233,4
+1,,,,Sunspear,Oldtown,2,560.2856414,3
+1,,,,The Arbor,Oldtown,6,135.1517665,6
+1,,,,The Arbor,Sunspear,4,623.2896598,5
+1,,,,Barrowtown,Pyke,3,332.2800024,4
+1,,,,Bear Island,Barrowtown,2,307.1025887,5
+1,,,,Braavos,White Harbor,6,448.6423966,7
+1,,,,Braavos,Gulltown,6,237.4068238,6
+1,,,,Braavos,Dragonstone,3,354.8309457,6
+1,,,,Braavos,Sunspear,2,774.6844519,3
+1,,,,Pentos,White Harbor,3,668.4915856,4
+1,,,,Pentos,Gulltown,5,287.8350222,6
+1,,,,Pentos,Dragonstone,3,242.9156232,6
+1,,,,Pentos,Sunspear,5,450.3476435,3
+1,,,,Myr,Sunspear,6,334.001497,3
+1,,,,Myr,Dragonstone,4,414.6058369,6
+1,,,,Myr,Gulltown,5,498.1616204,6
+1,,,,Norvos,Pentos,6,241.8677324,5
+1,,,,Norvos,Braavos,4,316.1407914,6
+1,,,,Myr,Pentos,4,222.6252456,8
+1,,,,Norvos,Myr,5,359.0013928,7
+1,,,,Qohor,Norvos,4,229.296751,5
+1,,,,Volantis,Myr,7,355.6304261,6
+1,,,,Qohor,Myr,7,396.4454565,7
+1,,,,Volantis,Qohor,6,417.2217636,5
+1,,,,Vaes Dothrak,Qohor,7,988.4796407,2
+1,,,,Volantis,Vaes Dothrak,5,1146.215512,2
+1,,,,Valyria,Oros,4,128.1561547,2
+1,,,,Volantis,Valyria,5,367.8369204,1
+1,,,,Volantis,Oros,4,313.6367325,3
+1,,,,Elyria,Oros,3,177.4514018,4
+1,,,,Elyria,Volantis,7,309.0129447,5
+1,,,,Elyria,Astopor,6,251.0975906,4
+1,,,,Elyria,Yunkai,5,286.4000698,4
+1,,,,Astopor,Yunkai,9,138.2931669,5
+1,,,,Meereen,Yunkai,9,72.9177619,6
+1,,,,Meereen,Astopor,5,202.2671501,5
+1,,,,Elyria,Meereen,6,353.386474,5
+1,,,,Vaes Dothrak,Meereen,8,562.2499444,2
+1,,,,Vaes Dothrak,Qarth,7,753.1487237,1
+1,,,,Meereen,Qarth,3,666.4968117,3
+1,,,,Valyria,Qarth,5,1026.043371,1
+1,,,,Braavos,The Dreadfort,3,494.490647,3
