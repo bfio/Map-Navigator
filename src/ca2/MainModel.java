@@ -20,7 +20,6 @@ public class MainModel {
 		}
 
 		connectCities();
-		System.out.println("Done loading Database");
 	}
 
 	private void loadCities(File dbFile) throws FileNotFoundException {

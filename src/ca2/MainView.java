@@ -1,10 +1,12 @@
 package ca2;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -23,7 +25,10 @@ public class MainView extends Stage{
 	private ScrollPane pane = new ScrollPane();
 	private ImageView mapImageView = new ImageView();
 	
-	public MainView() throws IOException {
+	private ComboBox<City> fromCityDropdown = new ComboBox<>();
+	private ComboBox<City> toCityDropdown = new ComboBox<>();
+	
+	public MainView() {
 		super.setTitle("Map Navigator");
 		
 		BorderPane root = new BorderPane();
@@ -34,6 +39,16 @@ public class MainView extends Stage{
 		
 		pane.setContent(mapImageView);
 		root.setCenter(pane);
+		
+		VBox vBox = new VBox();
+		vBox.setSpacing(10);
+		vBox.setPadding(new Insets(10, 40, 40, 40));
+		
+		Label fromLabel = new Label("From City");
+		Label toLabel = new Label("To City");
+		vBox.getChildren().addAll(fromLabel, fromCityDropdown, toLabel, toCityDropdown);
+		
+		root.setRight(vBox);
 		
 		super.setScene(scene);
 		super.show();
@@ -65,6 +80,22 @@ public class MainView extends Stage{
 	
 	public void setImageView(Image img) {
 		mapImageView.setImage(img);
+	}
+
+	public void setFromCityDropdown(List<City> cities) {
+		this.fromCityDropdown.getItems().addAll(cities);
+	}
+
+	public void setToCityDropdown(List<City> cities) {
+		this.toCityDropdown.getItems().addAll(cities);
+	}
+
+	public ComboBox<City> getFromCityDropdown() {
+		return fromCityDropdown;
+	}
+
+	public ComboBox<City> getToCityDropdown() {
+		return toCityDropdown;
 	}
 	
 }

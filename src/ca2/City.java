@@ -20,5 +20,10 @@ public class City {
 		connectedCities.add(city);
 		city.connectedCities.add(this);
 	}
+
+	@Override
+	public String toString() {
+		return this.name;
+	}
 	
 }
