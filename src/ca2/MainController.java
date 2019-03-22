@@ -42,11 +42,21 @@ public class MainController implements EventHandler<ActionEvent>{
 	public void handle(ActionEvent event) {
 		if (event.getSource().equals(view.getMenuItemExit())) {
 			Platform.exit();
-		} else if (event.getSource().equals(view.getFromCityDropdown())) {
-			System.out.println("From City updated to: " + view.getFromCityDropdown().getValue());
-		} else if (event.getSource().equals(view.getToCityDropdown())) {
-			System.out.println("To City updated to: " + view.getToCityDropdown().getValue());
+			return;
 		}
+		
+		City fromCity = view.getFromCityDropdown().getValue();
+		City toCity = view.getToCityDropdown().getValue();
+
+		if (event.getSource().equals(view.getFromCityDropdown())) {
+			System.out.println("From City updated to: " + fromCity);
+		} else if (event.getSource().equals(view.getToCityDropdown())) {
+			System.out.println("To City updated to: " + toCity);
+		}
+		
+		if(fromCity != null && toCity != null)
+			model.searchGraphDepthFirst(fromCity, null, toCity);
+		
 	}
 	
 }
