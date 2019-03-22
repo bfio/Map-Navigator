@@ -35,8 +35,7 @@ public class MainModel {
 				String name = mScanner.next();
 				int x = mScanner.nextInt();
 				int y = mScanner.nextInt();
-				System.out.println(name + " " + x + " " + y);
-
+				
 				cities.add(new City(name, x, y));
 			}
 
@@ -67,9 +66,6 @@ public class MainModel {
 				int ease = mScanner.nextInt();
 				double distance = mScanner.nextDouble();
 				int safety = mScanner.nextInt();
-
-				System.out.println("Route " + fromCityName + " to " + toCityName + '\t' + "Ease: " + ease
-						+ " Distance: " + distance + " Saftey: " + safety);
 
 				City fromCity = null, toCity = null;
 
