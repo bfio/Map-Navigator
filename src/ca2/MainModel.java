@@ -6,6 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.PixelReader;
+import javafx.scene.image.PixelWriter;
+import javafx.scene.image.WritableImage;
+import javafx.scene.paint.Color;
+
 public class MainModel {
 
 	private List<City> cities = new ArrayList<>();
@@ -120,4 +126,70 @@ public class MainModel {
 			}
 		return null;
 	}
+
+	public Image drawCity(Image orgImage, City city) {
+		int orgImgWidth = (int) orgImage.getWidth();
+		int orgImgHeight = (int) orgImage.getHeight();
+
+		PixelReader reader = orgImage.getPixelReader();
+
+		WritableImage img = new WritableImage(orgImgWidth, orgImgHeight);
+		PixelWriter writer = img.getPixelWriter();
+
+		for (int row = 0; row < orgImgHeight; row++) {
+			for (int col = 0; col < orgImgWidth; col++) {
+				Color color = reader.getColor(col, row);
+				
+				boolean inRangeOfCity = (Math.abs(col - city.x) < 10 && Math.abs(row - city.y) < 10);
+				
+				if(inRangeOfCity)
+					color = Color.BLACK;
+				
+				writer.setColor(col, row, color);
+			}
+		}
+
+		return img;
+	}
+	
+	public Image drawRoute(Image orgImage, Route route) {
+		int orgImgWidth = (int) orgImage.getWidth();
+		int orgImgHeight = (int) orgImage.getHeight();
+
+		PixelReader reader = orgImage.getPixelReader();
+
+		WritableImage img = new WritableImage(orgImgWidth, orgImgHeight);
+		PixelWriter writer = img.getPixelWriter();
+
+		int x1 = route.getFromCity().x;
+		int x2 = route.getToCity().x;
+		int y1 = route.getFromCity().y;
+		int y2 = route.getToCity().y;
+		
+		int botRow = (y2 >= y1) ? y2 : y1;
+		int topRow = (y2 >= y1) ? y1 : y2;
+		int leftCol = (x2 >= x1) ? x1 : x2;
+		int rightCol = (x2 >= x1) ? x2 : x1;
+		
+		double m = (double)(y2 - y1)/(x2-x1);
+		
+		for (int row = 0; row < orgImgHeight; row++) {
+			for (int col = 0; col < orgImgWidth; col++) {
+				Color color = reader.getColor(col, row);
+				
+				
+				if((row < botRow && row > topRow) && (col > leftCol && col < rightCol)){
+					double close = m * (col - x1) + y1 - row;
+					boolean inRangeOfRoute = (Math.abs(close) < 5);
+					if(inRangeOfRoute)
+						color = Color.PURPLE;
+				}
+				
+				writer.setColor(col, row, color);
+			}
+		}
+
+		return img;
+	}
+	
 }
