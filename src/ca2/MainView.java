@@ -30,9 +30,10 @@ public class MainView extends Stage{
 	
 	public MainView() {
 		super.setTitle("Map Navigator");
+		super.setMaximized(true);
 		
 		BorderPane root = new BorderPane();
-		Scene scene = new Scene(root, 1280, 720);
+		Scene scene = new Scene(root);
 		
 		VBox menuBox = new VBox(getMenuBar());
 		root.setTop(menuBox);
