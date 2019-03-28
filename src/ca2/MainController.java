@@ -1,6 +1,8 @@
 package ca2;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import ca2.MainModel;
 import ca2.MainView;
@@ -15,8 +17,9 @@ import javafx.scene.paint.Color;
 
 public class MainController implements EventHandler<ActionEvent> {
 
-	private static final String[] ROUTE_OPERATIONS = {"Multiple Routes", "Shortest Route", "Easiest Route", "Safest Route"};
-	
+	private static final String[] ROUTE_OPERATIONS = { "Multiple Routes", "Shortest Route", "Easiest Route",
+			"Safest Route" };
+
 	private MainView view;
 	private MainModel model;
 
@@ -29,17 +32,18 @@ public class MainController implements EventHandler<ActionEvent> {
 		view.getAllMenuItems().forEach(m -> m.setOnAction(this));
 		view.getFromCityDropdown().setOnAction(this);
 		view.getToCityDropdown().setOnAction(this);
-		view.getRouteOperationsDropdown().setOnAction(this);
+		view.getFindRouteButton().setOnAction(this);
+		view.getAddWaypointButton().setOnAction(this);
 
 		setUpControllerPane();
-		
+
 		resetDisplayedImg();
 	}
 
 	private void resetDisplayedImg() {
 		displayedImg = view.getMapImg();
 	}
-	
+
 	private void setUpControllerPane() {
 		List<City> cities = model.getCities();
 
@@ -55,26 +59,50 @@ public class MainController implements EventHandler<ActionEvent> {
 			return;
 		}
 
+		if (event.getSource().equals(view.getFromCityDropdown())
+				|| event.getSource().equals(view.getToCityDropdown())) {
+			resetDisplayedImg();
+
+			City fromCity = view.getFromCityDropdown().getValue();
+			City toCity = view.getToCityDropdown().getValue();
+
+			displayedImg = drawCity(displayedImg, fromCity);
+			displayedImg = drawCity(displayedImg, toCity);
+		} else if (event.getSource().equals(view.getAddWaypointButton())) {
+			view.createWaypointView(model.getCities());
+		} else if (event.getSource().equals(view.getFindRouteButton())) {
+			findRoute();
+		}
+
+		view.setImageView(displayedImg);
+	}
+
+	private void findRoute() {
 		City fromCity = view.getFromCityDropdown().getValue();
 		City toCity = view.getToCityDropdown().getValue();
 
-		if (event.getSource().equals(view.getFromCityDropdown())) {
-			System.out.println("From City updated to: " + fromCity);
-
-		} else if (event.getSource().equals(view.getToCityDropdown())) {
-			System.out.println("To City updated to: " + toCity);
-		}
-
-		resetDisplayedImg();
-		displayedImg = drawCity(displayedImg, fromCity);
-		displayedImg = drawCity(displayedImg, toCity);
-
-		view.setImageView(displayedImg);
-
 		if (fromCity != null && toCity != null) {
-			model.searchGraphDepthFirst(fromCity, null, toCity);
-		}
+			List<City> stops = new ArrayList<>();
 
+			stops.add(fromCity);
+			view.getWaypointDropdown().forEach(cb -> stops.add(cb.getValue()));
+			stops.add(toCity);
+
+			stops.removeIf(Objects::isNull);
+
+			String selectedOp = view.getRouteOperationsDropdown().getValue();
+			if (selectedOp == null) {
+				model.searchGraphDepthFirst(fromCity, null, toCity);
+			} else if (selectedOp.equals(ROUTE_OPERATIONS[0])) {
+				System.out.println("Find Multiple Routes");
+			} else if (selectedOp.equals(ROUTE_OPERATIONS[1])) {
+				System.out.println("Find Shortest Routes");
+			} else if (selectedOp.equals(ROUTE_OPERATIONS[2])) {
+				System.out.println("Find Easiest Routes");
+			} else if (selectedOp.equals(ROUTE_OPERATIONS[3])) {
+				System.out.println("Find Safest Routes");
+			}
+		}
 	}
 
 	public Image drawCity(Image orgImage, City city) {

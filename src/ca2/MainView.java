@@ -33,6 +33,7 @@ public class MainView extends Stage {
 	private ComboBox<City> fromCityDropdown = new ComboBox<>();
 	private ComboBox<City> toCityDropdown = new ComboBox<>();
 	private Button addWaypoint = new Button("Add Waypoint");
+	private List<ComboBox<City>> waypoints = new ArrayList<>();
 
 	public MainView(Image map) {
 		super.setTitle("Map Navigator");
@@ -85,12 +86,24 @@ public class MainView extends Stage {
 		return menuFile;
 	}
 
+	public void createWaypointView(List<City> cities) {
+		ComboBox<City> waypoint = new ComboBox<City>();
+		waypoint.getItems().addAll(cities);
+		waypoint.setMinWidth(150);
+		controlPane.getChildren().add(waypoint);
+		waypoints.add(waypoint);
+	}
+
 	public List<MenuItem> getAllMenuItems() {
 		return menuItems;
 	}
 
 	public MenuItem getMenuItemExit() {
 		return menuItemExit;
+	}
+
+	public Button getFindRouteButton() {
+		return findRouteButtton;
 	}
 
 	public Image getMapImg() {
@@ -123,6 +136,14 @@ public class MainView extends Stage {
 
 	public ComboBox<String> getRouteOperationsDropdown() {
 		return routeOperationsDropdown;
+	}
+
+	public List<ComboBox<City>> getWaypointDropdown() {
+		return waypoints;
+	}
+
+	public Button getAddWaypointButton() {
+		return addWaypoint;
 	}
 
 }
