@@ -18,7 +18,7 @@ public class MainController implements EventHandler<ActionEvent> {
 	private MainView view;
 	private MainModel model;
 
-	private Image mapImage, displayedImg;
+	private Image displayedImg;
 
 	public MainController(MainView view, MainModel model) {
 		this.view = view;
@@ -28,18 +28,15 @@ public class MainController implements EventHandler<ActionEvent> {
 		view.getFromCityDropdown().setOnAction(this);
 		view.getToCityDropdown().setOnAction(this);
 
-		this.mapImage = new Image("file:map2.jpg");
-		displayedImg = mapImage;
-		
-		view.setImageView(displayedImg);
-		
 		setUpControllerPane();
+		
+		resetDisplayedImg();
 	}
 
-	private void clearOverlays() {
-		displayedImg = mapImage;
+	private void resetDisplayedImg() {
+		displayedImg = view.getMapImg();
 	}
-
+	
 	private void setUpControllerPane() {
 		List<City> cities = model.getCities();
 
@@ -64,7 +61,7 @@ public class MainController implements EventHandler<ActionEvent> {
 			System.out.println("To City updated to: " + toCity);
 		}
 
-		clearOverlays();
+		resetDisplayedImg();
 		displayedImg = drawCity(displayedImg, fromCity);
 		displayedImg = drawCity(displayedImg, toCity);
 

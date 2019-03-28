@@ -23,12 +23,13 @@ public class MainView extends Stage{
 	private MenuItem menuItemExit;
 	
 	private ScrollPane pane = new ScrollPane();
+	private Image mapImage;
 	private ImageView mapImageView = new ImageView();
 	
 	private ComboBox<City> fromCityDropdown = new ComboBox<>();
 	private ComboBox<City> toCityDropdown = new ComboBox<>();
 	
-	public MainView() {
+	public MainView(Image map) {
 		super.setTitle("Map Navigator");
 		super.setMaximized(true);
 		
@@ -38,6 +39,8 @@ public class MainView extends Stage{
 		VBox menuBox = new VBox(getMenuBar());
 		root.setTop(menuBox);
 		
+		this.mapImage = map;
+		setImageView(mapImage);
 		pane.setContent(mapImageView);
 		root.setCenter(pane);
 		
@@ -77,6 +80,10 @@ public class MainView extends Stage{
 
 	public MenuItem getMenuItemExit() {
 		return menuItemExit;
+	}
+	
+	public Image getMapImg() {
+		return mapImage;
 	}
 	
 	public void setImageView(Image img) {
