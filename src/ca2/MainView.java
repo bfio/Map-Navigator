@@ -5,6 +5,7 @@ import java.util.List;
 
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
@@ -17,53 +18,63 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class MainView extends Stage{
+public class MainView extends Stage {
 
 	private List<MenuItem> menuItems = new ArrayList<>();
 	private MenuItem menuItemExit;
-	
+
 	private ScrollPane pane = new ScrollPane();
 	private Image mapImage;
 	private ImageView mapImageView = new ImageView();
-	
+
+	private VBox controlPane = new VBox();
+	private Button findRouteButtton = new Button("Find Route");
+	private ComboBox<String> routeOperationsDropdown = new ComboBox<>();
 	private ComboBox<City> fromCityDropdown = new ComboBox<>();
 	private ComboBox<City> toCityDropdown = new ComboBox<>();
-	
+	private Button addWaypoint = new Button("Add Waypoint");
+
 	public MainView(Image map) {
 		super.setTitle("Map Navigator");
 		super.setMaximized(true);
-		
+
 		BorderPane root = new BorderPane();
 		Scene scene = new Scene(root);
-		
+
 		VBox menuBox = new VBox(getMenuBar());
 		root.setTop(menuBox);
-		
+
 		this.mapImage = map;
 		setImageView(mapImage);
 		pane.setContent(mapImageView);
 		root.setCenter(pane);
-		
-		VBox vBox = new VBox();
-		vBox.setSpacing(10);
-		vBox.setPadding(new Insets(10, 40, 40, 40));
-		
+
+		controlPane.setSpacing(10);
+		controlPane.setPadding(new Insets(10, 40, 40, 40));
+
+		Label opsLabel = new Label("Options");
 		Label fromLabel = new Label("From City");
 		Label toLabel = new Label("To City");
-		vBox.getChildren().addAll(fromLabel, fromCityDropdown, toLabel, toCityDropdown);
-		
-		root.setRight(vBox);
-		
+
+		findRouteButtton.setMinWidth(150);
+		routeOperationsDropdown.setMinWidth(150);
+		fromCityDropdown.setMinWidth(150);
+		toCityDropdown.setMinWidth(150);
+		controlPane.getChildren().addAll(findRouteButtton, opsLabel, routeOperationsDropdown, fromLabel,
+				fromCityDropdown, toLabel, toCityDropdown, addWaypoint);
+
+		root.setRight(controlPane);
+
 		super.setScene(scene);
 		super.show();
 	}
-	
+
 	private MenuBar getMenuBar() {
 		MenuBar menuBar = new MenuBar();
 		menuBar.getMenus().addAll(createFileMenu());
 		return menuBar;
 	}
-	
+
 	private Menu createFileMenu() {
 		Menu menuFile = new Menu("File");
 
@@ -81,11 +92,11 @@ public class MainView extends Stage{
 	public MenuItem getMenuItemExit() {
 		return menuItemExit;
 	}
-	
+
 	public Image getMapImg() {
 		return mapImage;
 	}
-	
+
 	public void setImageView(Image img) {
 		mapImageView.setImage(img);
 	}
@@ -98,6 +109,10 @@ public class MainView extends Stage{
 		this.toCityDropdown.getItems().addAll(cities);
 	}
 
+	public void setRouteOperationsDropdown(String[] operations) {
+		this.routeOperationsDropdown.getItems().addAll(operations);
+	}
+
 	public ComboBox<City> getFromCityDropdown() {
 		return fromCityDropdown;
 	}
@@ -105,5 +120,9 @@ public class MainView extends Stage{
 	public ComboBox<City> getToCityDropdown() {
 		return toCityDropdown;
 	}
-	
+
+	public ComboBox<String> getRouteOperationsDropdown() {
+		return routeOperationsDropdown;
+	}
+
 }

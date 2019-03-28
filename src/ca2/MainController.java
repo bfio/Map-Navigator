@@ -15,6 +15,8 @@ import javafx.scene.paint.Color;
 
 public class MainController implements EventHandler<ActionEvent> {
 
+	private static final String[] ROUTE_OPERATIONS = {"Multiple Routes", "Shortest Route", "Easiest Route", "Safest Route"};
+	
 	private MainView view;
 	private MainModel model;
 
@@ -27,6 +29,7 @@ public class MainController implements EventHandler<ActionEvent> {
 		view.getAllMenuItems().forEach(m -> m.setOnAction(this));
 		view.getFromCityDropdown().setOnAction(this);
 		view.getToCityDropdown().setOnAction(this);
+		view.getRouteOperationsDropdown().setOnAction(this);
 
 		setUpControllerPane();
 		
@@ -42,6 +45,7 @@ public class MainController implements EventHandler<ActionEvent> {
 
 		view.setFromCityDropdown(cities);
 		view.setToCityDropdown(cities);
+		view.setRouteOperationsDropdown(ROUTE_OPERATIONS);
 	}
 
 	@Override
