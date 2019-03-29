@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 import ca2.MainModel;
+import ca2.MainModel.CostedPath;
 import ca2.MainView;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -71,6 +72,7 @@ public class MainController implements EventHandler<ActionEvent> {
 		} else if (event.getSource().equals(view.getAddWaypointButton())) {
 			view.createWaypointView(model.getCities());
 		} else if (event.getSource().equals(view.getFindRouteButton())) {
+			resetDisplayedImg();
 			findRoute();
 		}
 
@@ -90,6 +92,7 @@ public class MainController implements EventHandler<ActionEvent> {
 
 			stops.removeIf(Objects::isNull);
 
+			List<City> paths = new ArrayList<>();
 			String selectedOp = view.getRouteOperationsDropdown().getValue();
 			if (selectedOp == null) {
 				model.searchGraphDepthFirst(fromCity, null, toCity);
@@ -97,10 +100,22 @@ public class MainController implements EventHandler<ActionEvent> {
 				System.out.println("Find Multiple Routes");
 			} else if (selectedOp.equals(ROUTE_OPERATIONS[1])) {
 				System.out.println("Find Shortest Routes");
+				CostedPath shortestPath = model.searchGraphDepthFirstShortestPath(fromCity, null, 0, toCity);
+				paths = shortestPath.pathList;
 			} else if (selectedOp.equals(ROUTE_OPERATIONS[2])) {
 				System.out.println("Find Easiest Routes");
 			} else if (selectedOp.equals(ROUTE_OPERATIONS[3])) {
 				System.out.println("Find Safest Routes");
+				CostedPath safestPath = model.searchGraphDepthFirstSafestPath(fromCity, null, 0, toCity);
+				paths = safestPath.pathList;
+			}
+			
+			
+			for(int i = 1; i < paths.size(); i++) {
+				City fr = paths.get(i-1);
+				City to = paths.get(i);
+				
+				displayedImg = drawRoute(displayedImg, fr, to);
 			}
 		}
 	}
@@ -126,7 +141,7 @@ public class MainController implements EventHandler<ActionEvent> {
 		return img;
 	}
 
-	public Image drawRoute(Image orgImage, Route route) {
+	public Image drawRoute(Image orgImage, City fromCity, City toCity) {
 		int orgImgWidth = (int) orgImage.getWidth();
 		int orgImgHeight = (int) orgImage.getHeight();
 
@@ -135,10 +150,10 @@ public class MainController implements EventHandler<ActionEvent> {
 		WritableImage img = new WritableImage(reader, orgImgWidth, orgImgHeight);
 		PixelWriter writer = img.getPixelWriter();
 
-		int x1 = route.getFromCity().x;
-		int x2 = route.getToCity().x;
-		int y1 = route.getFromCity().y;
-		int y2 = route.getToCity().y;
+		int x1 = fromCity.x;
+		int x2 = toCity.x;
+		int y1 = fromCity.y;
+		int y2 = toCity.y;
 
 		int botRow = (y2 >= y1) ? y2 : y1;
 		int topRow = (y2 >= y1) ? y1 : y2;
