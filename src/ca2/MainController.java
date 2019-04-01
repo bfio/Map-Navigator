@@ -10,6 +10,7 @@ import ca2.MainView;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.PixelWriter;
@@ -96,19 +97,23 @@ public class MainController implements EventHandler<ActionEvent> {
 
 			String selectedOp = view.getRouteOperationsDropdown().getValue();
 			
-			List<City> avoidCity = new ArrayList<>();
-			final List<City> temp=avoidCity;
-			
+			List<City> avoidCity = null;			
 			if (!view.getAvoidCityDropdown().isEmpty()) {
-				view.getAvoidCityDropdown().forEach(cb -> temp.add(cb.getValue()));
+				avoidCity = new ArrayList<>();
+				for(ComboBox<City> cb : view.getAvoidCityDropdown()) {
+					avoidCity.add(cb.getValue());
+				}
 				avoidCity.removeIf(Objects::isNull);
-			} else {
-				avoidCity = null;
 			}
 			
 			List<City> paths = new ArrayList<>();
 			for (int i = 1; i < stops.size(); i++) {
-				paths.addAll(getPath(stops.get(i - 1), stops.get(i), avoidCity, selectedOp));
+				List<City> tempEncount = null;
+				if(avoidCity != null) {
+					tempEncount = new ArrayList<>();
+					tempEncount.addAll(avoidCity);
+				}
+				paths.addAll(getPath(stops.get(i - 1), stops.get(i), tempEncount, selectedOp));
 			}
 
 			for (int i = 1; i < paths.size(); i++) {

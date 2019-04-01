@@ -39,7 +39,7 @@ public class MainView extends Stage {
 
 	public MainView(Image map) {
 		super.setTitle("Map Navigator");
-		//super.setMaximized(true);
+		super.setMaximized(true);
 
 		BorderPane root = new BorderPane();
 		Scene scene = new Scene(root);
