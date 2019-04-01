@@ -92,24 +92,13 @@ public class MainController implements EventHandler<ActionEvent> {
 
 			stops.removeIf(Objects::isNull);
 
-			List<City> paths = new ArrayList<>();
 			String selectedOp = view.getRouteOperationsDropdown().getValue();
-			if (selectedOp == null) {
-				model.searchGraphDepthFirst(fromCity, null, toCity);
-			} else if (selectedOp.equals(ROUTE_OPERATIONS[0])) {
-				System.out.println("Find Multiple Routes");
-			} else if (selectedOp.equals(ROUTE_OPERATIONS[1])) {
-				System.out.println("Find Shortest Routes");
-				CostedPath shortestPath = model.searchGraphDepthFirstShortestPath(fromCity, null, 0, toCity);
-				paths = shortestPath.pathList;
-			} else if (selectedOp.equals(ROUTE_OPERATIONS[2])) {
-				System.out.println("Find Easiest Routes");
-			} else if (selectedOp.equals(ROUTE_OPERATIONS[3])) {
-				System.out.println("Find Safest Routes");
-				CostedPath safestPath = model.searchGraphDepthFirstSafestPath(fromCity, null, 0, toCity);
-				paths = safestPath.pathList;
-			}
 			
+			List<City> paths = new ArrayList<>();
+			
+			for(int i = 1; i < stops.size(); i++) {
+				paths.addAll(getPath(stops.get(i-1), stops.get(i), selectedOp));
+			}
 			
 			for(int i = 1; i < paths.size(); i++) {
 				City fr = paths.get(i-1);
@@ -118,6 +107,27 @@ public class MainController implements EventHandler<ActionEvent> {
 				displayedImg = drawRoute(displayedImg, fr, to);
 			}
 		}
+	}
+
+	private List<City> getPath(City fromCity, City toCity, String selectedOp) {
+		List<City> path = new ArrayList<>();
+		if (selectedOp == null) {
+			model.searchGraphDepthFirst(fromCity, null, toCity);
+		} else if (selectedOp.equals(ROUTE_OPERATIONS[0])) {
+			System.out.println("Find Multiple Routes");
+		} else if (selectedOp.equals(ROUTE_OPERATIONS[1])) {
+			System.out.println("Find Shortest Routes");
+			CostedPath shortestPath = model.searchGraphDepthFirstShortestPath(fromCity, null, 0, toCity);
+			path = shortestPath.pathList;
+		} else if (selectedOp.equals(ROUTE_OPERATIONS[2])) {
+			System.out.println("Find Easiest Routes");
+		} else if (selectedOp.equals(ROUTE_OPERATIONS[3])) {
+			System.out.println("Find Safest Routes");
+			CostedPath safestPath = model.searchGraphDepthFirstSafestPath(fromCity, null, 0, toCity);
+			path = safestPath.pathList;
+		}
+		
+		return path;
 	}
 
 	public Image drawCity(Image orgImage, City city) {
