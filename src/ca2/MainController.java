@@ -84,20 +84,20 @@ public class MainController implements EventHandler<ActionEvent> {
 		City toCity = view.getToCityDropdown().getValue();
 
 		if (fromCity != null && toCity != null) {
+			
 			List<City> stops = new ArrayList<>();
-
 			stops.add(fromCity);
 			view.getWaypointDropdown().forEach(cb -> stops.add(cb.getValue()));
 			stops.add(toCity);
-
 			stops.removeIf(Objects::isNull);
 
 			String selectedOp = view.getRouteOperationsDropdown().getValue();
+			List<City> avoidCity = null;
+//			view.getAvoidCityDropdown().forEach(cb -> avoidCity.add(cb.getValue()));
 			
 			List<City> paths = new ArrayList<>();
-			
 			for(int i = 1; i < stops.size(); i++) {
-				paths.addAll(getPath(stops.get(i-1), stops.get(i), selectedOp));
+				paths.addAll(getPath(stops.get(i-1), stops.get(i), avoidCity, selectedOp));
 			}
 			
 			for(int i = 1; i < paths.size(); i++) {
@@ -109,7 +109,7 @@ public class MainController implements EventHandler<ActionEvent> {
 		}
 	}
 
-	private List<City> getPath(City fromCity, City toCity, String selectedOp) {
+	private List<City> getPath(City fromCity, City toCity, List<City> avoidCities, String selectedOp) {
 		List<City> path = new ArrayList<>();
 		if (selectedOp == null) {
 			model.searchGraphDepthFirst(fromCity, null, toCity);
@@ -117,13 +117,13 @@ public class MainController implements EventHandler<ActionEvent> {
 			System.out.println("Find Multiple Routes");
 		} else if (selectedOp.equals(ROUTE_OPERATIONS[1])) {
 			System.out.println("Find Shortest Routes");
-			CostedPath shortestPath = model.searchGraphDepthFirstShortestPath(fromCity, null, 0, toCity);
+			CostedPath shortestPath = model.searchGraphDepthFirstShortestPath(fromCity, avoidCities, 0, toCity);
 			path = shortestPath.pathList;
 		} else if (selectedOp.equals(ROUTE_OPERATIONS[2])) {
 			System.out.println("Find Easiest Routes");
 		} else if (selectedOp.equals(ROUTE_OPERATIONS[3])) {
 			System.out.println("Find Safest Routes");
-			CostedPath safestPath = model.searchGraphDepthFirstSafestPath(fromCity, null, 0, toCity);
+			CostedPath safestPath = model.searchGraphDepthFirstSafestPath(fromCity, avoidCities, 0, toCity);
 			path = safestPath.pathList;
 		}
 		
