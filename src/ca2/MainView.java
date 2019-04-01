@@ -34,10 +34,12 @@ public class MainView extends Stage {
 	private ComboBox<City> toCityDropdown = new ComboBox<>();
 	private Button addWaypoint = new Button("Add Waypoint");
 	private List<ComboBox<City>> waypoints = new ArrayList<>();
+	private Button addAvoidCity = new Button("Avoid City");
+	private List<ComboBox<City>> avoidCities = new ArrayList<>();
 
 	public MainView(Image map) {
 		super.setTitle("Map Navigator");
-		super.setMaximized(true);
+		//super.setMaximized(true);
 
 		BorderPane root = new BorderPane();
 		Scene scene = new Scene(root);
@@ -62,7 +64,7 @@ public class MainView extends Stage {
 		fromCityDropdown.setMinWidth(150);
 		toCityDropdown.setMinWidth(150);
 		controlPane.getChildren().addAll(findRouteButtton, opsLabel, routeOperationsDropdown, fromLabel,
-				fromCityDropdown, toLabel, toCityDropdown, addWaypoint);
+				fromCityDropdown, toLabel, toCityDropdown, addWaypoint, addAvoidCity);
 
 		root.setRight(controlPane);
 
@@ -87,11 +89,21 @@ public class MainView extends Stage {
 	}
 
 	public void createWaypointView(List<City> cities) {
+		Label label = new Label("Waypoint");
 		ComboBox<City> waypoint = new ComboBox<City>();
 		waypoint.getItems().addAll(cities);
 		waypoint.setMinWidth(150);
-		controlPane.getChildren().add(waypoint);
+		controlPane.getChildren().addAll(label, waypoint);
 		waypoints.add(waypoint);
+	}
+	
+	public void createAvoidCityView(List<City> cities) {
+		Label label = new Label("Avoid");
+		ComboBox<City> avoidCity = new ComboBox<City>();
+		avoidCity.getItems().addAll(cities);
+		avoidCity.setMinWidth(150);
+		controlPane.getChildren().addAll(label, avoidCity);
+		avoidCities.add(avoidCity);
 	}
 
 	public List<MenuItem> getAllMenuItems() {
@@ -144,6 +156,14 @@ public class MainView extends Stage {
 
 	public Button getAddWaypointButton() {
 		return addWaypoint;
+	}
+	
+	public List<ComboBox<City>> getAvoidCityDropdown() {
+		return avoidCities;
+	}
+
+	public Button getAddAvoidCityButton() {
+		return addAvoidCity;
 	}
 
 }

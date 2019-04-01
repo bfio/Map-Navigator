@@ -35,6 +35,7 @@ public class MainController implements EventHandler<ActionEvent> {
 		view.getToCityDropdown().setOnAction(this);
 		view.getFindRouteButton().setOnAction(this);
 		view.getAddWaypointButton().setOnAction(this);
+		view.getAddAvoidCityButton().setOnAction(this);
 
 		setUpControllerPane();
 
@@ -71,6 +72,8 @@ public class MainController implements EventHandler<ActionEvent> {
 			displayedImg = drawCity(displayedImg, toCity);
 		} else if (event.getSource().equals(view.getAddWaypointButton())) {
 			view.createWaypointView(model.getCities());
+		} else if (event.getSource().equals(view.getAddAvoidCityButton())) {
+			view.createAvoidCityView(model.getCities());
 		} else if (event.getSource().equals(view.getFindRouteButton())) {
 			resetDisplayedImg();
 			findRoute();
@@ -84,7 +87,7 @@ public class MainController implements EventHandler<ActionEvent> {
 		City toCity = view.getToCityDropdown().getValue();
 
 		if (fromCity != null && toCity != null) {
-			
+
 			List<City> stops = new ArrayList<>();
 			stops.add(fromCity);
 			view.getWaypointDropdown().forEach(cb -> stops.add(cb.getValue()));
@@ -92,18 +95,26 @@ public class MainController implements EventHandler<ActionEvent> {
 			stops.removeIf(Objects::isNull);
 
 			String selectedOp = view.getRouteOperationsDropdown().getValue();
-			List<City> avoidCity = null;
-//			view.getAvoidCityDropdown().forEach(cb -> avoidCity.add(cb.getValue()));
 			
-			List<City> paths = new ArrayList<>();
-			for(int i = 1; i < stops.size(); i++) {
-				paths.addAll(getPath(stops.get(i-1), stops.get(i), avoidCity, selectedOp));
+			List<City> avoidCity = new ArrayList<>();
+			final List<City> temp=avoidCity;
+			
+			if (!view.getAvoidCityDropdown().isEmpty()) {
+				view.getAvoidCityDropdown().forEach(cb -> temp.add(cb.getValue()));
+				avoidCity.removeIf(Objects::isNull);
+			} else {
+				avoidCity = null;
 			}
 			
-			for(int i = 1; i < paths.size(); i++) {
-				City fr = paths.get(i-1);
+			List<City> paths = new ArrayList<>();
+			for (int i = 1; i < stops.size(); i++) {
+				paths.addAll(getPath(stops.get(i - 1), stops.get(i), avoidCity, selectedOp));
+			}
+
+			for (int i = 1; i < paths.size(); i++) {
+				City fr = paths.get(i - 1);
 				City to = paths.get(i);
-				
+
 				displayedImg = drawRoute(displayedImg, fr, to);
 			}
 		}
@@ -126,7 +137,7 @@ public class MainController implements EventHandler<ActionEvent> {
 			CostedPath safestPath = model.searchGraphDepthFirstSafestPath(fromCity, avoidCities, 0, toCity);
 			path = safestPath.pathList;
 		}
-		
+
 		return path;
 	}
 
