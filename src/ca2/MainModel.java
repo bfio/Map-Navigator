@@ -111,6 +111,17 @@ public class MainModel {
 	public List<Route> getRoutes() {
 		return routes;
 	}
+	
+	public Route getRoute(City from, City to) {
+		Route route = null;
+		for(Route r : routes) {
+			if((r.fromCity == from || r.fromCity == to) && (r.toCity == from || r.toCity == to)) {
+				route = r;
+				break;
+			}
+		}
+		return route;
+	}
 
 	// Recursive depth-first search of graph (node returned if found)
 	public City searchGraphDepthFirst(City from, List<City> encountered, City lookingfor) {

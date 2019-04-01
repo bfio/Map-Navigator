@@ -96,32 +96,51 @@ public class MainController implements EventHandler<ActionEvent> {
 			stops.removeIf(Objects::isNull);
 
 			String selectedOp = view.getRouteOperationsDropdown().getValue();
-			
-			List<City> avoidCity = null;			
+
+			List<City> avoidCity = null;
 			if (!view.getAvoidCityDropdown().isEmpty()) {
 				avoidCity = new ArrayList<>();
-				for(ComboBox<City> cb : view.getAvoidCityDropdown()) {
+				for (ComboBox<City> cb : view.getAvoidCityDropdown()) {
 					avoidCity.add(cb.getValue());
 				}
 				avoidCity.removeIf(Objects::isNull);
 			}
-			
+
 			List<City> paths = new ArrayList<>();
 			for (int i = 1; i < stops.size(); i++) {
 				List<City> tempEncount = null;
-				if(avoidCity != null) {
+				if (avoidCity != null) {
 					tempEncount = new ArrayList<>();
 					tempEncount.addAll(avoidCity);
 				}
 				paths.addAll(getPath(stops.get(i - 1), stops.get(i), tempEncount, selectedOp));
 			}
 
-			for (int i = 1; i < paths.size(); i++) {
-				City fr = paths.get(i - 1);
-				City to = paths.get(i);
+			drawPaths(paths);	
+		}
+	}
 
-				displayedImg = drawRoute(displayedImg, fr, to);
+	private void drawPaths(List<City> paths) {
+		for (int i = 1; i < paths.size(); i++) {
+			City fr = paths.get(i - 1);
+			City to = paths.get(i);
+
+			if(fr.equals(to))
+				continue;
+			
+			Route r = model.getRoute(fr, to);
+			int threshColor = r.ease * r.safety;
+			
+			Color routeColor;
+			if (threshColor < 15) {
+				routeColor = Color.GREEN;
+			} else if (threshColor > 40) {
+				routeColor = Color.RED;
+			} else {
+				routeColor = Color.YELLOW;
 			}
+
+			displayedImg = drawRoute(displayedImg, fr, to, routeColor);
 		}
 	}
 
@@ -167,7 +186,7 @@ public class MainController implements EventHandler<ActionEvent> {
 		return img;
 	}
 
-	public Image drawRoute(Image orgImage, City fromCity, City toCity) {
+	public Image drawRoute(Image orgImage, City fromCity, City toCity, Color color) {
 		int orgImgWidth = (int) orgImage.getWidth();
 		int orgImgHeight = (int) orgImage.getHeight();
 
@@ -194,7 +213,6 @@ public class MainController implements EventHandler<ActionEvent> {
 				double close = m * (col - x1) + y1 - row;
 				boolean inRangeOfRoute = (Math.abs(close) < 5);
 				if (inRangeOfRoute) {
-					Color color = Color.PURPLE;
 					writer.setColor(col, row, color);
 				}
 
