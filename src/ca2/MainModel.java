@@ -111,11 +111,11 @@ public class MainModel {
 	public List<Route> getRoutes() {
 		return routes;
 	}
-	
+
 	public Route getRoute(City from, City to) {
 		Route route = null;
-		for(Route r : routes) {
-			if((r.fromCity == from || r.fromCity == to) && (r.toCity == from || r.toCity == to)) {
+		for (Route r : routes) {
+			if ((r.fromCity == from || r.fromCity == to) && (r.toCity == from || r.toCity == to)) {
 				route = r;
 				break;
 			}
@@ -174,7 +174,7 @@ public class MainModel {
 					temp.pathList.add(0, from); // Add the current node to the front of the path list
 					allPaths.add(temp); // Add the new candidate path to the list of all costed paths
 				}
-			} else {
+			} else if (adjLink.toCity.equals(from)){
 				if (!encountered.contains(adjLink.fromCity)) // That has not yet been encountered
 				{
 					// Create a new CostedPath from this node to the searched for item (if a valid
@@ -214,20 +214,20 @@ public class MainModel {
 				{
 					// Create a new CostedPath from this node to the searched for item (if a valid
 					// path exists)
-					CostedPath temp = searchGraphDepthFirstShortestPath(adjLink.toCity, encountered,
-							totalCost + (adjLink.safety), lookingfor);
+					CostedPath temp = searchGraphDepthFirstSafestPath(adjLink.toCity, encountered,
+							totalCost + adjLink.safety, lookingfor);
 					if (temp == null)
 						continue; // No path was found, so continue to the next iteration
 					temp.pathList.add(0, from); // Add the current node to the front of the path list
 					allPaths.add(temp); // Add the new candidate path to the list of all costed paths
 				}
-			} else {
+			} else if (adjLink.toCity.equals(from)) {
 				if (!encountered.contains(adjLink.fromCity)) // That has not yet been encountered
 				{
 					// Create a new CostedPath from this node to the searched for item (if a valid
 					// path exists)
-					CostedPath temp = searchGraphDepthFirstShortestPath(adjLink.fromCity, encountered,
-							totalCost + (adjLink.safety), lookingfor);
+					CostedPath temp = searchGraphDepthFirstSafestPath(adjLink.fromCity, encountered,
+							totalCost + adjLink.safety, lookingfor);
 					if (temp == null)
 						continue; // No path was found, so continue to the next iteration
 					temp.pathList.add(0, from); // Add the current node to the front of the path list

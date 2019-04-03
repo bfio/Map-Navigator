@@ -153,12 +153,14 @@ public class MainController implements EventHandler<ActionEvent> {
 		} else if (selectedOp.equals(ROUTE_OPERATIONS[1])) {
 			System.out.println("Find Shortest Routes");
 			CostedPath shortestPath = model.searchGraphDepthFirstShortestPath(fromCity, avoidCities, 0, toCity);
+			System.out.println(shortestPath.pathCost);
 			path = shortestPath.pathList;
 		} else if (selectedOp.equals(ROUTE_OPERATIONS[2])) {
 			System.out.println("Find Easiest Routes");
 		} else if (selectedOp.equals(ROUTE_OPERATIONS[3])) {
 			System.out.println("Find Safest Routes");
 			CostedPath safestPath = model.searchGraphDepthFirstSafestPath(fromCity, avoidCities, 0, toCity);
+			System.out.println(safestPath.pathCost);
 			path = safestPath.pathList;
 		}
 

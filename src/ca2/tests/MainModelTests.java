@@ -1,6 +1,11 @@
 package ca2.tests;
 
+import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -8,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import ca2.City;
 import ca2.MainModel;
+import ca2.MainModel.CostedPath;
 import ca2.Route;
 
 class MainModelTests {
@@ -17,6 +23,27 @@ class MainModelTests {
 	@BeforeEach
 	void setUp() throws Exception {
 		model = new MainModel(new File("Database.csv"));
+	}
+	
+	public class CostedPath {
+		public double pathCost = 0;
+		public List<City> pathList = new ArrayList<>();
+	}
+	
+	@Test
+	void testCollecMin() {
+		CostedPath p1 = new CostedPath();
+		CostedPath p2 = new CostedPath();
+		
+		p1.pathCost = 10;
+		p2.pathCost = 20;
+		
+		List<CostedPath> allPaths = new ArrayList<>();
+		allPaths.add(p1);
+		allPaths.add(p2);
+		
+		CostedPath out = Collections.max(allPaths, (path1, path2) -> (int) (path1.pathCost - path2.pathCost));
+		assertEquals(p2, out);
 	}
 
 	@Test
