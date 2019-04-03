@@ -133,9 +133,9 @@ public class MainController implements EventHandler<ActionEvent> {
 			
 			Color routeColor;
 			if (threshColor < 15) {
-				routeColor = Color.GREEN;
-			} else if (threshColor > 40) {
 				routeColor = Color.RED;
+			} else if (threshColor > 40) {
+				routeColor = Color.GREEN;
 			} else {
 				routeColor = Color.YELLOW;
 			}

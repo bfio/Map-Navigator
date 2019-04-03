@@ -11,6 +11,7 @@
 0,The Twins,633,1054,,,,,
 0,Pyke,419,1131,,,,,
 0,Riverrun,603,1189,,,,,
+2,King's Landing,782,1365,,,,,
 0,Harrenhal,730,1229,,,,,
 0,Gulltown,969,1147,,,,,
 0,Dragonstone,937,1282,,,,,
@@ -36,8 +37,9 @@
 0,Vaes Dothrak,2559,1259,,,,,
 0,Oros,1780,1960,,,,,
 1,,,,Winterfell,Castle Black,7,275.2635101,7
-1,,,,Winterfell,Bear Island,5,216.5409892,6
+1,,,,Winterfell,Bear Island,3,216.5409892,6
 1,,,,Winterfell,The Dreadfort,8,166.2077014,8
+1,,,,Winterfell,Barrowtown,7,190.394,7
 1,,,,Winterfell,White Harbor,7,186.5314987,7
 1,,,,Castle Black,Craster's Keep,3,51.85556865,3
 1,,,,Craster's Keep,Eastwatch,2,100.7223908,2
@@ -50,8 +52,8 @@
 1,,,,Barrowtown,Moat Cailin,7,135.6502857,7
 1,,,,The Twins,Gulltown,4,348.6330449,4
 1,,,,Gulltown,Dragonstone,2,138.7407655,6
-1,,,,The Twins,Pyke,6,227.4313083,7
-1,,,,Riverrun,Pyke,6,192.9248558,7
+1,,,,The Twins,Pyke,3,227.4313083,7
+1,,,,Riverrun,Pyke,3,192.9248558,7
 1,,,,The Twins,Riverrun,8,138.2931669,9
 1,,,,Riverrun,Harrenhal,8,133.150291,9
 1,,,,The Twins,Harrenhal,10,200.0849819,9
@@ -72,17 +74,17 @@
 1,,,,The Arbor,Sunspear,4,623.2896598,5
 1,,,,Barrowtown,Pyke,3,332.2800024,4
 1,,,,Bear Island,Barrowtown,2,307.1025887,5
-1,,,,Braavos,White Harbor,6,448.6423966,7
-1,,,,Braavos,Gulltown,6,237.4068238,6
-1,,,,Braavos,Dragonstone,3,354.8309457,6
+1,,,,Braavos,White Harbor,3,448.6423966,7
+1,,,,Braavos,Gulltown,3,237.4068238,6
+1,,,,Braavos,Dragonstone,2,354.8309457,6
 1,,,,Braavos,Sunspear,2,774.6844519,3
-1,,,,Pentos,White Harbor,3,668.4915856,4
-1,,,,Pentos,Gulltown,5,287.8350222,6
-1,,,,Pentos,Dragonstone,3,242.9156232,6
-1,,,,Pentos,Sunspear,5,450.3476435,3
-1,,,,Myr,Sunspear,6,334.001497,3
-1,,,,Myr,Dragonstone,4,414.6058369,6
-1,,,,Myr,Gulltown,5,498.1616204,6
+1,,,,Pentos,White Harbor,2,668.4915856,4
+1,,,,Pentos,Gulltown,3,287.8350222,6
+1,,,,Pentos,Dragonstone,2,242.9156232,6
+1,,,,Pentos,Sunspear,4,450.3476435,3
+1,,,,Myr,Sunspear,5,334.001497,3
+1,,,,Myr,Dragonstone,2,414.6058369,6
+1,,,,Myr,Gulltown,3,498.1616204,6
 1,,,,Norvos,Pentos,6,241.8677324,5
 1,,,,Norvos,Braavos,4,316.1407914,6
 1,,,,Myr,Pentos,4,222.6252456,8
@@ -93,8 +95,8 @@
 1,,,,Volantis,Qohor,6,417.2217636,5
 1,,,,Vaes Dothrak,Qohor,7,988.4796407,2
 1,,,,Volantis,Vaes Dothrak,5,1146.215512,2
-1,,,,Valyria,Oros,4,128.1561547,2
-1,,,,Volantis,Valyria,5,367.8369204,1
+1,,,,Valyria,Oros,2,128.1561547,2
+1,,,,Volantis,Valyria,4,367.8369204,1
 1,,,,Volantis,Oros,4,313.6367325,3
 1,,,,Elyria,Oros,3,177.4514018,4
 1,,,,Elyria,Volantis,7,309.0129447,5
