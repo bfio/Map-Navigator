@@ -96,7 +96,7 @@ public class MainView extends Stage {
 		controlPane.getChildren().addAll(label, waypoint);
 		waypoints.add(waypoint);
 	}
-	
+
 	public void createAvoidCityView(List<City> cities) {
 		Label label = new Label("Avoid");
 		ComboBox<City> avoidCity = new ComboBox<City>();
@@ -157,7 +157,7 @@ public class MainView extends Stage {
 	public Button getAddWaypointButton() {
 		return addWaypoint;
 	}
-	
+
 	public List<ComboBox<City>> getAvoidCityDropdown() {
 		return avoidCities;
 	}

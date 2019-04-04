@@ -116,31 +116,56 @@ public class MainController implements EventHandler<ActionEvent> {
 				paths.addAll(getPath(stops.get(i - 1), stops.get(i), tempEncount, selectedOp));
 			}
 
-			drawPaths(paths);	
+			drawPaths(paths, selectedOp);
 		}
 	}
 
-	private void drawPaths(List<City> paths) {
+	private void drawPaths(List<City> paths, String selectedOp) {
 		for (int i = 1; i < paths.size(); i++) {
 			City fr = paths.get(i - 1);
 			City to = paths.get(i);
 
-			if(fr.equals(to))
+			if (fr.equals(to))
 				continue;
-			
-			Route r = model.getRoute(fr, to);
-			int threshColor = r.ease * r.safety;
-			
+
 			Color routeColor;
-			if (threshColor < 15) {
-				routeColor = Color.RED;
-			} else if (threshColor > 40) {
-				routeColor = Color.GREEN;
+			Route r = model.getRoute(fr, to);
+
+			if (selectedOp.equals(ROUTE_OPERATIONS[1])) {
+				routeColor = getShortestColor(r);
+			} else if (selectedOp.equals(ROUTE_OPERATIONS[2])) {
+				routeColor = getEasiestColor(r);
+			} else if (selectedOp.equals(ROUTE_OPERATIONS[3])) {
+				routeColor = getEasiestColor(r);
 			} else {
-				routeColor = Color.YELLOW;
+				routeColor = getShortestColor(r);
 			}
 
 			displayedImg = drawRoute(displayedImg, fr, to, routeColor);
+		}
+	}
+
+	public Color getShortestColor(Route r) {
+		double threshColor = r.distance;
+
+		if (threshColor < 150) {
+			return Color.GREEN;
+		} else if (threshColor > 400) {
+			return Color.RED;
+		} else {
+			return Color.YELLOW;
+		}
+	}
+
+	public Color getEasiestColor(Route r) {
+		double threshColor = r.ease;
+
+		if (threshColor < 4) {
+			return Color.RED;
+		} else if (threshColor >= 7) {
+			return Color.GREEN;
+		} else {
+			return Color.YELLOW;
 		}
 	}
 
@@ -151,16 +176,13 @@ public class MainController implements EventHandler<ActionEvent> {
 		} else if (selectedOp.equals(ROUTE_OPERATIONS[0])) {
 			System.out.println("Find Multiple Routes");
 		} else if (selectedOp.equals(ROUTE_OPERATIONS[1])) {
-			System.out.println("Find Shortest Routes");
-			CostedPath shortestPath = model.searchGraphDepthFirstShortestPath(fromCity, avoidCities, 0, toCity);
-			System.out.println(shortestPath.pathCost);
+			CostedPath shortestPath = model.findShortestPath(fromCity, avoidCities, toCity);
 			path = shortestPath.pathList;
 		} else if (selectedOp.equals(ROUTE_OPERATIONS[2])) {
-			System.out.println("Find Easiest Routes");
+			CostedPath shortestPath = model.findEasiestPath(fromCity, avoidCities, toCity);
+			path = shortestPath.pathList;
 		} else if (selectedOp.equals(ROUTE_OPERATIONS[3])) {
-			System.out.println("Find Safest Routes");
-			CostedPath safestPath = model.searchGraphDepthFirstSafestPath(fromCity, avoidCities, 0, toCity);
-			System.out.println(safestPath.pathCost);
+			CostedPath safestPath = model.findSafestPath(fromCity, avoidCities, toCity);
 			path = safestPath.pathList;
 		}
 

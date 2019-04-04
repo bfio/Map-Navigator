@@ -1,6 +1,5 @@
 package ca2.tests;
 
-import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.File;
@@ -13,7 +12,6 @@ import org.junit.jupiter.api.Test;
 
 import ca2.City;
 import ca2.MainModel;
-import ca2.MainModel.CostedPath;
 import ca2.Route;
 
 class MainModelTests {
