@@ -106,24 +106,40 @@ public class MainController implements EventHandler<ActionEvent> {
 				avoidCity.removeIf(Objects::isNull);
 			}
 
-			List<City> paths = new ArrayList<>();
-			for (int i = 1; i < stops.size(); i++) {
-				List<City> tempEncount = null;
-				if (avoidCity != null) {
-					tempEncount = new ArrayList<>();
-					tempEncount.addAll(avoidCity);
+			if (selectedOp.equals(ROUTE_OPERATIONS[0])) {
+				for (int o = 1; o < ROUTE_OPERATIONS.length; o++) {
+					selectedOp = ROUTE_OPERATIONS[o];
+					drawPath(getFullPath(stops, avoidCity, selectedOp), o);
 				}
-				paths.addAll(getPath(stops.get(i - 1), stops.get(i), tempEncount, selectedOp));
+			} else if (selectedOp.equals(ROUTE_OPERATIONS[1])) {
+				//Shortest route
+				drawPath(getFullPath(stops, avoidCity, selectedOp), -1);
+			} else {
+				//Safest or easiest
+				drawPath(getFullPath(stops, avoidCity, selectedOp), -2);
 			}
 
-			drawPaths(paths, selectedOp);
 		}
 	}
 
-	private void drawPaths(List<City> paths, String selectedOp) {
-		for (int i = 1; i < paths.size(); i++) {
-			City fr = paths.get(i - 1);
-			City to = paths.get(i);
+	private List<City> getFullPath(List<City> stops, List<City> avoidCity, String selectedOp) {
+		List<City> fullPath = new ArrayList<>();
+		for (int i = 1; i < stops.size(); i++) {
+			List<City> tempEncount = null;
+			if (avoidCity != null) {
+				tempEncount = new ArrayList<>();
+				tempEncount.addAll(avoidCity);
+			}
+			fullPath.addAll(getPath(stops.get(i - 1), stops.get(i), tempEncount, selectedOp));
+		}
+
+		return fullPath;
+	}
+
+	private void drawPath(List<City> path, int color) {
+		for (int i = 1; i < path.size(); i++) {
+			City fr = path.get(i - 1);
+			City to = path.get(i);
 
 			if (fr.equals(to))
 				continue;
@@ -131,14 +147,25 @@ public class MainController implements EventHandler<ActionEvent> {
 			Color routeColor;
 			Route r = model.getRoute(fr, to);
 
-			if (selectedOp.equals(ROUTE_OPERATIONS[1])) {
-				routeColor = getShortestColor(r);
-			} else if (selectedOp.equals(ROUTE_OPERATIONS[2])) {
+			switch (color) {
+			case -2:
 				routeColor = getEasiestColor(r);
-			} else if (selectedOp.equals(ROUTE_OPERATIONS[3])) {
-				routeColor = getEasiestColor(r);
-			} else {
+				break;
+			case -1:
 				routeColor = getShortestColor(r);
+				break;
+			case 1:
+				routeColor = Color.PURPLE;
+				break;
+			case 2:
+				routeColor = Color.CRIMSON;
+				break;
+			case 3:
+				routeColor = Color.PINK;
+				break;
+			default:
+				routeColor = Color.TRANSPARENT;
+				break;
 			}
 
 			displayedImg = drawRoute(displayedImg, fr, to, routeColor);
