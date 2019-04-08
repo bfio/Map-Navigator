@@ -36,6 +36,7 @@ public class MainView extends Stage {
 	private List<ComboBox<City>> waypoints = new ArrayList<>();
 	private Button addAvoidCity = new Button("Avoid City");
 	private List<ComboBox<City>> avoidCities = new ArrayList<>();
+	private Button clearWaypoints = new Button("Clear All");
 
 	public MainView(Image map) {
 		super.setTitle("Map Navigator");
@@ -64,7 +65,7 @@ public class MainView extends Stage {
 		fromCityDropdown.setMinWidth(150);
 		toCityDropdown.setMinWidth(150);
 		controlPane.getChildren().addAll(findRouteButtton, opsLabel, routeOperationsDropdown, fromLabel,
-				fromCityDropdown, toLabel, toCityDropdown, addWaypoint, addAvoidCity);
+				fromCityDropdown, toLabel, toCityDropdown, addWaypoint, addAvoidCity, clearWaypoints);
 
 		root.setRight(controlPane);
 
@@ -89,21 +90,15 @@ public class MainView extends Stage {
 	}
 
 	public void createWaypointView(List<City> cities) {
-		Label label = new Label("Waypoint");
-		ComboBox<City> waypoint = new ComboBox<City>();
-		waypoint.getItems().addAll(cities);
-		waypoint.setMinWidth(150);
-		controlPane.getChildren().addAll(label, waypoint);
-		waypoints.add(waypoint);
+		WaypointCB waypoint = new WaypointCB("Waypoint", cities);
+		controlPane.getChildren().addAll(waypoint);
+		waypoints.add(waypoint.dropdown);
 	}
 
 	public void createAvoidCityView(List<City> cities) {
-		Label label = new Label("Avoid");
-		ComboBox<City> avoidCity = new ComboBox<City>();
-		avoidCity.getItems().addAll(cities);
-		avoidCity.setMinWidth(150);
-		controlPane.getChildren().addAll(label, avoidCity);
-		avoidCities.add(avoidCity);
+		WaypointCB avoidCity = new WaypointCB("Avoid", cities);
+		controlPane.getChildren().addAll(avoidCity);
+		avoidCities.add(avoidCity.dropdown);
 	}
 
 	public List<MenuItem> getAllMenuItems() {
@@ -164,6 +159,17 @@ public class MainView extends Stage {
 
 	public Button getAddAvoidCityButton() {
 		return addAvoidCity;
+	}
+	
+	public Button getClearWaypointsButton() {
+		return clearWaypoints;
+	}
+	
+	public void clearWaypoints() {
+		waypoints.clear();
+		avoidCities.clear();
+		
+		controlPane.getChildren().removeIf(n -> (n instanceof WaypointCB));
 	}
 
 }
